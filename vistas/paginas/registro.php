@@ -40,8 +40,25 @@
         </div>
 
     <?php
-        $registro = new ControladorFormularios();
-        $registro -> ctrRegistro();
+        //Método no estático
+        //$registro = new ControladorFormularios();
+        //$registro -> ctrRegistro();
+
+        //Método estático
+        $registro = ControladorFormularios::ctrRegistro();
+
+        if($registro == "ok"){
+
+            //Script para borrar datos después de registrar un usuario
+            echo '<script>
+                    if(window.history.replaceState){
+                        window.history.replaceState(null, null, window.location.href);
+                    }
+                  </script>';
+            
+            //Mensaje de Usuario Registrado
+            echo '<div class="alert alert-success">El usuario ha sido Registrado</div>';
+        }
     ?>
 
         <button type="submit" class="btn btn-primary">Enviar</button>
