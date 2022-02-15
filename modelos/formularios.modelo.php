@@ -52,6 +52,8 @@ class ModeloFormularios{
 
 			return $stmt -> fetchAll();
 
+			$stmt=null;
+
 		}else{
 
 			$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha FROM $tabla WHERE $item = :$item ORDER BY id DESC");
